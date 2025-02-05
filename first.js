@@ -1,7 +1,6 @@
 const apiKey = "LXvsR6l5IN8P6qHTxGXsE1kj13NKi0SjvhVwSIgf";
 let hacking1=document.getElementById("typingouttext")
 hacking1.style.overflowY = "auto";
-hacking1.style.maxHeight = "540px";
 
 async function fetchCohereResponse(prompt) {
    
@@ -53,8 +52,9 @@ hacking1.scrollTop=hacking1.scrollHeight
 };
 
 let d=document.getElementById('op')
+let erot=document.getElementById('action')
 let m=document.getElementById('actions')
-d.onmouseover=()=>{
+erot.onmouseover=()=>{
 m.style.visibility='visible'
 }
 d.onmouseout=()=>{
