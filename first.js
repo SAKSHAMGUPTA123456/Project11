@@ -1,7 +1,7 @@
 const apiKey = "LXvsR6l5IN8P6qHTxGXsE1kj13NKi0SjvhVwSIgf";
 let hacking1=document.getElementById("typingouttext")
 hacking1.style.overflowY = "auto";
-hacking1.style.maxHeight = "200px";
+hacking1.style.maxHeight = "400px";
 
 async function fetchCohereResponse(prompt) {
    
