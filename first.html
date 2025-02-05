@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body{
+            height: 1500px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            background-color: whitesmoke;
+        }
+       #action{
+        background-color: gray;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+       }
+        </style>
+</head>
+<body>
+
+
+<div class="flex justify-center">
+    <div style="color: gray; font-size: 40px;">MINI CHATGPT
+        </div>
+    </div>
+
+
+<div id="typingouttext" class="grid grid-cols-1" style="overflow-y: auto; scroll-behavior: smooth;">
+    
+    </div>
+
+<div class="grid grid-cols-1 fixed bottom-16 w-full sm:grid-cols-3">
+    <div class="hidden sm:block"></div>
+<div class="border border-gray-300 shadow-[0_4px_10px_rgba(0,0,0,0.2)]  ml-5 h-16" style="border-radius: 10px;">
+    <div   class="">
+        <input type="text" class=" focus:outline-none w-full" placeholder="Message:" id="first">
+       
+        </div>
+        <div class="flex justify-between">
+            <div>
+                <label for="op" id="action">+</label>
+                <h1 style="background-color: black; color: yellow;border-radius: 11px; visibility: hidden;" class="w-28 ml-9" id="actions">Please upload your file</h1>
+                <input type="file" id="op" class="hidden">
+            </div>
+            <div>
+                <button  id="third" class="border border-gray-300 shadow-[0_4px_10px_rgba(0,0,0,0.2)] w-8 mr-6" style="border-radius: 40px; background-color: black;"><img src="img/kCNfpZEhheCl.gif"></button>
+                </div>
+            </div>
+    </div>
+   </div> 
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
+    <script src="first.js"></script>
+</body>
+</html>
