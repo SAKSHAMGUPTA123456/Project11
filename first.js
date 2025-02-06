@@ -18,13 +18,18 @@ async function fetchCohereResponse(prompt) {
   });
 
   const data = await response.json();
+  let hacking=document.createElement('div')
+  hacking.style.display="flex"
+  hacking.style.justifyContent="start"
   let inputField=document.createElement('div')
   inputField.style.outline = "none";
-  inputField.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.1)"; 
+  inputField.style.borderRadius = "8px"; 
+  inputField.style.boxShadow = "3px 3px 10px black";
   inputField.innerText=`${data.text}`
   inputField.style.backgroundColor="gray"
   inputField.style.color="white"
-hacking1.append(inputField)
+  hacking.append(inputField)
+hacking1.append(hacking)
 hacking1.scrollTop=hacking1.scrollHeight
   console.log(data.text);
 }
@@ -32,22 +37,30 @@ hacking1.scrollTop=hacking1.scrollHeight
 let first=document.getElementById('first')
 let second=document.getElementById('third')
 let hacking2=document.getElementById('typingtext2')
+
 second.onclick=()=>{
-   
+  if(first.value!==""){
+   let hacking=document.createElement('div')
+   hacking.style.display="flex"
+   hacking.style.justifyContent="end"
     let inputField=document.createElement('div')
-    inputField.style.width = "100%";
     inputField.style.padding = "10px";
     inputField.style.border = "1px solid #d1d5db"; 
     inputField.style.borderRadius = "8px"; 
     inputField.style.outline = "none";
     inputField.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.1)"; 
     inputField.innerText=`${first.value}`;
-   inputField.style.display="flex"
-   inputField.style.justifyContent="flex-end"
-       hacking1.append(inputField)
+  //  inputField.style.display="flex"
+  //  inputField.style.justifyContent = "flex-start";
+   hacking.append(inputField)
+       hacking1.append(hacking)
 fetchCohereResponse(first.value);
  first.value=""
 hacking1.scrollTop=hacking1.scrollHeight
+  }
+  else{
+    alert('please write something ')
+  }
  // Delay for visual update
 };
 
