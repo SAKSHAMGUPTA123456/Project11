@@ -96,10 +96,14 @@ d.addEventListener('change', (event) => {
                   alert("Please upload an image first.");
                   return;
               }
-          
+          alert('pls wait for some second to access content')
               // Perform OCR using Tesseract.js
               Tesseract.recognize(selectedFile, 'eng', {
-                  logger: (m) => console.log(m) // Show progress in the console
+    
+                  logger: (m) => 
+                   
+                    console.log(m) // Show progress in the console
+
               })
               .then(({ data: { text } }) => {
                   // alert(`Extracted Text:\n${text || "No text detected."}`);
