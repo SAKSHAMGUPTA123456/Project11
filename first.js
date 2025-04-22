@@ -1,39 +1,51 @@
+
 const apiKey = "LXvsR6l5IN8P6qHTxGXsE1kj13NKi0SjvhVwSIgf";
 let hacking1=document.getElementById("typingouttext")
 hacking1.style.overflowY = "auto";
-
 async function fetchCohereResponse(prompt) {
-   
-  const response = await fetch("https://api.cohere.ai/generate", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "command-xlarge-nightly",
-      prompt: prompt,
-      max_tokens: 100,
-    }),
-  });
+  const API_KEY = "AIzaSyDDyVghmkB5H-T9MJVVN7AkjcVYk83loqc";
+
+try{
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${API_KEY}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }]
+      })
+    }
+  );
 
   const data = await response.json();
-  let hacking=document.createElement('div')
-  hacking.style.display="flex"
-  hacking.style.justifyContent="start"
-  let inputField=document.createElement('div')
-  inputField.style.outline = "none";
-  inputField.style.borderRadius = "8px"; 
-  inputField.style.boxShadow = "3px 3px 10px black";
-  inputField.innerText=`${data.text}`
-  inputField.style.backgroundColor="gray"
-  inputField.style.color="white"
-  hacking.append(inputField)
-hacking1.append(hacking)
-hacking1.scrollTop=hacking1.scrollHeight
-  console.log(data.text);
+  console.log("Full Gemini response:", data);
+
+  const text= data.candidates?.[0]?.content?.parts?.[0]?.text || "No response"
+ 
+    const hacking = document.createElement("div");
+    hacking.style.display = "flex";
+    hacking.style.justifyContent = "start";
+
+    const inputField = document.createElement("div");
+    inputField.style.outline = "none";
+    inputField.style.borderRadius = "8px";
+    inputField.style.boxShadow = "3px 3px 10px black";
+    inputField.style.padding = "10px";
+    inputField.innerText = text;
+    inputField.style.backgroundColor = "gray";
+    inputField.style.color = "white";
+
+    hacking.appendChild(inputField);
+    hacking1.appendChild(hacking);
+    hacking1.scrollTop = hacking1.scrollHeight;
+
+    console.log(text);
+  } catch (error) {
+    console.error("AI error:", error);
+  }
 }
 
+  
 let first=document.getElementById('first')
 let second=document.getElementById('third')
 let hacking2=document.getElementById('typingtext2')
@@ -132,46 +144,102 @@ d.addEventListener('change', (event) => {
 
 
 
-// // Select file input and buttons
-// const imageUpload = document.getElementById('hacking');
-// const extractButton = document.getElementById('extractBtn');
 
-// let selectedFile;
 
-// // Handle file input change event
-// imageUpload.addEventListener('change', (event) => {
-//     selectedFile = event.target.files[0];
-//     if (selectedFile) {
-//         const reader = new FileReader();
-//         reader.onload = function (e) {
-//             const img = document.createElement('img');
-//             img.src = e.target.result;
-//             img.style.maxWidth = '400px';
-//             img.onload = function () {
-//                 document.body.appendChild(img);
-//             };
-//         };
-//         reader.readAsDataURL(selectedFile);
-//     }
-// });
 
-// // Handle text extraction on button click
-// extractButton.addEventListener('click', () => {
-//     if (!selectedFile) {
-//         alert("Please upload an image first.");
-//         return;
-//     }
 
-//     // Perform OCR using Tesseract.js
-//     Tesseract.recognize(selectedFile, 'eng', {
-//         logger: (m) => console.log(m) // Show progress in the console
-//     })
-//     .then(({ data: { text } }) => {
-        // alert(`Extracted Text:\n${text || "No text detected."}`);
-        // fetchCohereResponse(` whats this code tell explain briefly${text}`)
-//     })
-//     .catch((err) => {
-//         console.error('Error:', err);
-//         alert("Error occurred during text extraction.");
-//     });
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // // Select file input and buttons
+// // const imageUpload = document.getElementById('hacking');
+// // const extractButton = document.getElementById('extractBtn');
+
+// // let selectedFile;
+
+// // // Handle file input change event
+// // imageUpload.addEventListener('change', (event) => {
+// //     selectedFile = event.target.files[0];
+// //     if (selectedFile) {
+// //         const reader = new FileReader();
+// //         reader.onload = function (e) {
+// //             const img = document.createElement('img');
+// //             img.src = e.target.result;
+// //             img.style.maxWidth = '400px';
+// //             img.onload = function () {
+// //                 document.body.appendChild(img);
+// //             };
+// //         };
+// //         reader.readAsDataURL(selectedFile);
+// //     }
+// // });
+
+// // // Handle text extraction on button click
+// // extractButton.addEventListener('click', () => {
+// //     if (!selectedFile) {
+// //         alert("Please upload an image first.");
+// //         return;
+// //     }
+
+// //     // Perform OCR using Tesseract.js
+// //     Tesseract.recognize(selectedFile, 'eng', {
+// //         logger: (m) => console.log(m) // Show progress in the console
+// //     })
+// //     .then(({ data: { text } }) => {
+//         // alert(`Extracted Text:\n${text || "No text detected."}`);
+//         // fetchCohereResponse(` whats this code tell explain briefly${text}`)
+// //     })
+// //     .catch((err) => {
+// //         console.error('Error:', err);
+// //         alert("Error occurred during text extraction.");
+// //     });
+// // });
