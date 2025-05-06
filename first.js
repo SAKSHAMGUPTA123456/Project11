@@ -1,26 +1,25 @@
 
-const apiKey = "LXvsR6l5IN8P6qHTxGXsE1kj13NKi0SjvhVwSIgf";
 let hacking1=document.getElementById("typingouttext")
 hacking1.style.overflowY = "auto";
 async function fetchCohereResponse(prompt) {
-  const API_KEY = "AIzaSyDDyVghmkB5H-T9MJVVN7AkjcVYk83loqc";
+
 
 try{
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${API_KEY}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+ 
+    const response = await fetch('http://localhost:11434/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }]
+        model: 'tinyllama',
+        prompt: prompt,
+        stream: false  // important for readable JSON response
       })
-    }
-  );
+    });
 
   const data = await response.json();
   console.log("Full Gemini response:", data);
 
-  const text= data.candidates?.[0]?.content?.parts?.[0]?.text || "No response"
+  const text= data.response||"noresponse"
  
     const hacking = document.createElement("div");
     hacking.style.display = "flex";
