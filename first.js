@@ -6,15 +6,22 @@ async function fetchCohereResponse(prompt) {
 
 try{
  
-    const response = await fetch('http://localhost:11434/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'tinyllama',
-        prompt: prompt,
-        stream: false  // important for readable JSON response
-      })
-    });
+  const response = await fetch('http://localhost:11434/api/generate', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest' // <-- Required to bypass 403
+    },
+    body: JSON.stringify({
+      model: 'tinyllama',
+      prompt: prompt,
+      stream: false
+    }),
+    mode: 'cors' 
+  });
+
+
+  
 
   const data = await response.json();
   console.log("Full Gemini response:", data);
