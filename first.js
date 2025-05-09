@@ -6,11 +6,10 @@ async function fetchCohereResponse(prompt) {
 
 try{
  
-  const response = await fetch('http://localhost:11434/api/generate', {
+  const response = await fetch(' https://localhost//11434/api/generate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest' // <-- Required to bypass 403
     },
     body: JSON.stringify({
       model: 'tinyllama',
